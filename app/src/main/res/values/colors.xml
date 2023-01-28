@@ -11,6 +11,7 @@
     <color name="gray_1">#d6d9e1</color>
     <color name="fab_color">#C8E1FA</color>
     <color name="blue">#3B86FF</color>
+    <color name="transparent">#00FF0000</color>
     <color name="light_red">#FF6565</color>
     <color name="purple">#A3A0FB</color>
     <color name="dark_blue">#43425D</color>

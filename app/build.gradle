@@ -1,3 +1,6 @@
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
@@ -16,12 +19,18 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments += [
-                        "room.schemaLocation":"$projectDir/schemas".toString(),
-                        "room.incremental":"true",
-                        "room.expandProjection":"true"
+                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                        "room.incremental"     : "true",
+                        "room.expandProjection": "true"
                 ]
             }
         }
+
+        buildConfigField("String", "METAMON_SERVER_BASE_URL_DEBUG", properties.getProperty("METAMON_SERVER_BASE_URL_DEBUG"))
+        buildConfigField("String", "METAMON_SERVER_BASE_URL_RELEASE", properties.getProperty("METAMON_SERVER_BASE_URL_RELEASE"))
+        buildConfigField("String", "AWS_ACCESS_KEY", properties.getProperty("AWS_ACCESS_KEY"))
+        buildConfigField("String", "AWS_SECRET_KEY", properties.getProperty("AWS_SECRET_KEY"))
+        buildConfigField("String", "AWS_S3_BUCKET_NAME", properties.getProperty("AWS_S3_BUCKET_NAME"))
     }
 
     buildTypes {
@@ -123,6 +132,9 @@ dependencies {
 
     // Security
     implementation "androidx.security:security-crypto:$security_version"
+
+    // AWS S3
+    implementation 'com.amazonaws:aws-android-sdk-s3:2.13.5'
 
     // Utils
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$desugar_jdk_libs_version"

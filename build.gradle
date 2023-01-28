@@ -4,7 +4,7 @@ buildscript {
         kotlin_version = '1.6.21'
         compileSdkVersion = 31
         targetSdkVersion = compileSdkVersion
-        minSdkVersion = 23
+        minSdkVersion = 24
 
         appcompat_version = '1.4.2'
         lifecycle_version = '2.5.0'
@@ -33,6 +33,7 @@ buildscript {
         desugar_jdk_libs_version = '1.1.5'
         timber_version = '5.0.1'
         security_version = "1.0.0"
+        s3_version = "2.13.5"
     }
 
     repositories {
