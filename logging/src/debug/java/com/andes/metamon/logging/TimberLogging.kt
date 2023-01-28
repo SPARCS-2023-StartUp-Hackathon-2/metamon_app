@@ -32,7 +32,7 @@
  * THE SOFTWARE.
  */
 
-package com.realworld.android.logging
+package com.andes.metamon.logging
 
 import timber.log.Timber
 
