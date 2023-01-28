@@ -3,6 +3,7 @@ package com.andes.metamon.utils
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.IdRes
@@ -15,7 +16,7 @@ import androidx.lifecycle.viewModelScope
 import com.andes.metamon.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.realworld.android.logging.Logger
+import com.andes.metamon.logging.Logger
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -67,4 +68,18 @@ inline fun <reified T : Activity> Context.navigateActivity(
     vararg argument: Pair<String, Any?>
 ) {
     startActivity(buildIntent<T>(*argument))
+}
+
+inline fun View.setOnSingleClickListener(
+    delay: Long = 500L,
+    crossinline block: (View) -> Unit
+) {
+    var previousClickedTime = 0L
+    setOnClickListener { view ->
+        val clickedTime = System.currentTimeMillis()
+        if (clickedTime - previousClickedTime >= delay) {
+            block(view)
+            previousClickedTime = clickedTime
+        }
+    }
 }

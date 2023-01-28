@@ -8,12 +8,14 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.andes.navigator.MainNavigator
+import dagger.hilt.android.EntryPointAccessors
 
 abstract class BindingFragment<T : ViewDataBinding>(
     @LayoutRes private val layoutRes: Int
 ) : Fragment() {
     private var _binding: T? = null
-    private val binding: T
+    val binding: T
         get() = requireNotNull(_binding)
 
     override fun onCreateView(
@@ -24,6 +26,13 @@ abstract class BindingFragment<T : ViewDataBinding>(
         _binding = DataBindingUtil.inflate(inflater, layoutRes, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
+    }
+
+    val mainNavigator: MainNavigator by lazy {
+        EntryPointAccessors.fromActivity(
+            requireActivity(),
+            Injector.MainNavigatorInjector::class.java
+        ).mainNavigator()
     }
 
     override fun onDestroyView() {
