@@ -23,6 +23,10 @@ class LoginRepositoryImpl @Inject constructor(
         localPreferenceUserDataSource.saveAccessToken(accessToken)
     }
 
+    override fun saveUserName(userName: String) {
+        localPreferenceUserDataSource.saveUserName(userName)
+    }
+
     override fun getIsFirstVisited(): Boolean = localPreferenceUserDataSource.getIsFirstVisited()
 
     override fun setIsFirstVisited(isFirstVisit: Boolean) {
@@ -41,6 +45,7 @@ class LoginRepositoryImpl @Inject constructor(
             is NetworkState.Success -> return Result.success(
                 LoginResponse(
                     id = response.body.data?.id ?: 0L,
+                    userName = response.body.data?.userName.orEmpty(),
                     email = response.body.data?.email.orEmpty(),
                     token = response.body.data?.token.orEmpty()
                 )

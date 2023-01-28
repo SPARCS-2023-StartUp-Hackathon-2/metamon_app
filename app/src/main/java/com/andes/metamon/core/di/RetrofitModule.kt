@@ -24,6 +24,7 @@ import javax.inject.Singleton
 object RetrofitModule {
 
     private const val AUTHORIZATION = "Authorization"
+    private const val BEARER = "Bearer "
 
     @Provides
     @Singleton
@@ -43,7 +44,7 @@ object RetrofitModule {
                         .newBuilder()
                         .addHeader(
                             AUTHORIZATION,
-                            localPreferenceUserDataSourceImpl.getAccessToken()
+                            BEARER + localPreferenceUserDataSourceImpl.getAccessToken()
                         )
                         .build()
                 )

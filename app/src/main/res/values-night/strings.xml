@@ -3,7 +3,7 @@
     <string name="app_name_uppercase">METAMON</string>
 
     <!-- 공통 -->
-    <string name="next">다음</string>
+    <string name="complete">완료</string>
 
     <!-- 하단 메뉴 -->
     <string name="menu_home">홈</string>
@@ -19,5 +19,9 @@
     <!-- 다이얼로그 -->
     <string name="cancel">취소</string>
     <string name="check">확인</string>
+
+    <!-- 홈 -->
+    <string name="sir">님</string>
+    <string name="welcome">반갑습니다.</string>
 
 </resources>

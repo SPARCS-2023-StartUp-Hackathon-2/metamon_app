@@ -4,6 +4,8 @@ import com.andes.metamon.auth.data.remote.data_source.RemoteLoginDataSource
 import com.andes.metamon.auth.data.remote.data_source.RemoteLoginDataSourceImpl
 import com.andes.metamon.core.data.remote.data_source.RemoteCertificateDataSource
 import com.andes.metamon.core.data.remote.data_source.RemoteCertificateDataSourceImpl
+import com.andes.metamon.main.home.data.remote.data_source.RemoteHomeDataSource
+import com.andes.metamon.main.home.data.remote.data_source.RemoteHomeDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -21,4 +23,8 @@ interface RemoteDataSourceModule {
     @Binds
     @Singleton
     fun bindsRemoteImageDataSource(source: RemoteCertificateDataSourceImpl): RemoteCertificateDataSource
+
+    @Binds
+    @Singleton
+    fun bindsRemoteHomeDataSource(source: RemoteHomeDataSourceImpl): RemoteHomeDataSource
 }

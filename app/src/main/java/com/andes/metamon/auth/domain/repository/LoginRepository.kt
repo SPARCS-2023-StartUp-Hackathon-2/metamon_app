@@ -9,6 +9,8 @@ interface LoginRepository {
 
     fun saveAccessToken(accessToken: String)
 
+    fun saveUserName(userName: String)
+
     fun getIsFirstVisited(): Boolean
 
     fun setIsFirstVisited(isFirstVisit: Boolean)

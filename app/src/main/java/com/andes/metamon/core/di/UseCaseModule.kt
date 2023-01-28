@@ -18,6 +18,7 @@ object UseCaseModule {
         return LoginUseCases(
             getAccessToken = GetAccessToken(repository),
             saveAccessToken = SaveAccessToken(repository),
+            saveUserName = SaveUserName(repository),
             getIsFirstVisited = GetIsFirstVisited(repository),
             setIsFirstVisited = SetIsFirstVisited(repository),
             postLogin = PostLogin(repository)

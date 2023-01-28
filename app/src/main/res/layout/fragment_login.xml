@@ -152,10 +152,12 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_next"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginEnd="80dp"
                 android:background="@drawable/bg_rectangle_white_round_5_dp"
-                android:text="@string/next"
+                android:text="@string/complete"
                 android:textAlignment="center"
                 android:textColor="@color/blue"
                 android:textStyle="bold"
