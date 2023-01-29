@@ -4,6 +4,7 @@ import com.andes.metamon.auth.data.remote.service.LoginService
 import com.andes.metamon.core.data.remote.service.CertificateService
 import com.andes.metamon.core.di.annotations.MetamonServer
 import com.andes.metamon.main.home.data.remote.service.IdCardService
+import com.andes.metamon.main.profile.data.remote.service.ProfileService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,4 +30,9 @@ object RetrofitServiceModule {
     @Singleton
     fun provideIdCardService(@MetamonServer retrofit: Retrofit): IdCardService =
         retrofit.create(IdCardService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideProfileService(@MetamonServer retrofit: Retrofit): ProfileService =
+        retrofit.create(ProfileService::class.java)
 }

@@ -15,7 +15,7 @@ import com.andes.metamon.utils.setOnSingleClickListener
 import com.bumptech.glide.Glide
 
 class CardAdapter(
-    private val onCardClick: (Long) -> Unit
+    private val onCardClick: () -> Unit
 ) : ListAdapter<UserCardInfo, CardAdapter.CardViewHolder>(
     ItemDiffCallback<UserCardInfo>(
         onContentsTheSame = { oldItem, newItem -> oldItem.hashCode() == newItem.hashCode() },
@@ -40,9 +40,8 @@ class CardAdapter(
         @SuppressLint("SetTextI18n")
         fun onBind(
             userCardInfo: UserCardInfo,
-            onCardClick: (Long) -> Unit
+            onCardClick: () -> Unit
         ) {
-            binding.root.setOnSingleClickListener { onCardClick(userCardInfo.authCardId) }
             binding.apply {
                 tvNickname.text = userCardInfo.nickname + "님의"
                 tvIdCard.text = userCardInfo.platform + "신분증"
@@ -105,11 +104,13 @@ class CardAdapter(
                                 Color.rgb(255, 255, 255),
                                 android.graphics.PorterDuff.Mode.MULTIPLY
                             )
+                            clDetail.visibility = View.GONE
                         } else {
                             ivImage.setColorFilter(
                                 Color.rgb(123, 123, 123),
                                 android.graphics.PorterDuff.Mode.MULTIPLY
                             )
+                            clDetail.visibility = View.VISIBLE
                         }
                         isRobloxClicked = !isRobloxClicked
                     }
@@ -118,6 +119,9 @@ class CardAdapter(
                     clMetamon.visibility = View.GONE
                     clDetail.visibility = View.GONE
                     clMetamonDetail.visibility = View.GONE
+                    root.setOnClickListener {
+                        onCardClick()
+                    }
                 } else { // 메타몽
                     ivPlatform.setBackgroundResource(R.drawable.img_metamon)
                     ivImage.setBackgroundResource(R.color.blue)

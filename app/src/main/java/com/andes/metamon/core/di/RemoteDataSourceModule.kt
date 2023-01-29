@@ -6,6 +6,8 @@ import com.andes.metamon.core.data.remote.data_source.RemoteCertificateDataSourc
 import com.andes.metamon.core.data.remote.data_source.RemoteCertificateDataSourceImpl
 import com.andes.metamon.main.home.data.remote.data_source.RemoteHomeDataSource
 import com.andes.metamon.main.home.data.remote.data_source.RemoteHomeDataSourceImpl
+import com.andes.metamon.main.profile.data.remote.data_source.RemoteProfileDataSource
+import com.andes.metamon.main.profile.data.remote.data_source.RemoteProfileDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -27,4 +29,8 @@ interface RemoteDataSourceModule {
     @Binds
     @Singleton
     fun bindsRemoteHomeDataSource(source: RemoteHomeDataSourceImpl): RemoteHomeDataSource
+
+    @Binds
+    @Singleton
+    fun bindsRemoteProfileDataSource(source: RemoteProfileDataSourceImpl): RemoteProfileDataSource
 }

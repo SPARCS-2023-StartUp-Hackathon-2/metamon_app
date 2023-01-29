@@ -87,7 +87,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         viewPager.setPageTransformer(comPosPageTarn)
     }
 
-    private fun onCardClick(userCardId: Long) {
+    private fun onCardClick() {
         // TODO 카드 넘어가는 로직
     }
 

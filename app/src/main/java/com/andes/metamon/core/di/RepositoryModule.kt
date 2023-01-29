@@ -6,6 +6,8 @@ import com.andes.metamon.core.data.repository.CertificateRepositoryImpl
 import com.andes.metamon.core.domain.repository.CertificateRepository
 import com.andes.metamon.main.home.data.repository.HomeRepositoryImpl
 import com.andes.metamon.main.home.domain.repository.HomeRepository
+import com.andes.metamon.main.profile.data.repository.ProfileRepositoryImpl
+import com.andes.metamon.main.profile.domain.repository.ProfileRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -27,4 +29,8 @@ interface RepositoryModule {
     @Binds
     @Singleton
     fun bindsHomeRepository(repository: HomeRepositoryImpl): HomeRepository
+
+    @Binds
+    @Singleton
+    fun bindsProfileRepository(repository: ProfileRepositoryImpl): ProfileRepository
 }
