@@ -26,6 +26,7 @@ class HomeRepositoryImpl @Inject constructor(
                         nickname = it.nickname.orEmpty(),
                         platform = it.platform.orEmpty(),
                         qrImageUrl = it.qrImageUrl.orEmpty(),
+                        profileImageUrl = it.profileImageUrl.orEmpty(),
                         userId = it.userId ?: 0L,
                         userName = it.userName.orEmpty(),
                         userEmail = it.userEmail.orEmpty(),

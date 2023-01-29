@@ -5,6 +5,7 @@ data class UserCardInfo(
     val nickname: String,
     val platform: String,
     val qrImageUrl: String,
+    val profileImageUrl: String,
     val userId: Long,
     val userName: String,
     val userEmail: String,

@@ -65,13 +65,16 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
     private val getCameraResult = registerForActivityResult(
         ActivityResultContracts.TakePicturePreview()
     ) {
-        mainViewModel.uploadAndDownloadFile(
-            folderName = "example",
-            userId = 1L,
-            fileName = "12312312",
-            bitmapToFile(this, it ?: throw Exception())
-        )
-        Log.d("okhttp", it.toString())
+        try {
+            mainViewModel.uploadAndDownloadFile(
+                folderName = "example",
+                userId = 1L,
+                fileName = "12312312",
+                bitmapToFile(this, it ?: throw Exception())
+            )
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     private val cameraPermissionLauncher =

@@ -14,6 +14,7 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.andes.metamon.R
 import com.andes.metamon.databinding.FragmentHomeBinding
+import com.andes.metamon.main.home.domain.model.response.UserCardInfo
 import com.andes.metamon.utils.BindingFragment
 import com.andes.metamon.utils.UiState
 import com.andes.metamon.utils.shortToast
@@ -49,7 +50,19 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         homeViewModel.homeUiState.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
             when (it) {
                 is UiState.Success -> {
-                    cardAdapter.submitList(it.data)
+                    cardAdapter.submitList(
+                        it.data + UserCardInfo(
+                            authCardId = -1L,
+                            nickname = EMPTY_STRING,
+                            platform = "MORE",
+                            qrImageUrl = EMPTY_STRING,
+                            profileImageUrl = EMPTY_STRING,
+                            userId = -1L,
+                            userName = EMPTY_STRING,
+                            userEmail = EMPTY_STRING,
+                            userBirth = EMPTY_STRING
+                        )
+                    )
                 }
                 is UiState.Failure -> {
                     it.msg?.let { msg ->
@@ -65,6 +78,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
     private fun setViewPagerAnimation(viewPager: ViewPager2) {
         val comPosPageTarn = CompositePageTransformer()
+        viewPager.setPadding(150, 0, 150, 0);
         comPosPageTarn.addTransformer(MarginPageTransformer(40))
         comPosPageTarn.addTransformer { page, position ->
             val r: Float = 1 - abs(position)
@@ -75,5 +89,9 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
     private fun onCardClick(userCardId: Long) {
         // TODO 카드 넘어가는 로직
+    }
+
+    companion object {
+        const val EMPTY_STRING = ""
     }
 }
